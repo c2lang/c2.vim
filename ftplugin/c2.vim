@@ -1,4 +1,7 @@
 " Only do this when not done yet for this buffer
+
+compiler c2c
+
 if (exists("b:did_ftplugin"))
   finish
 endif
@@ -9,8 +12,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-" TODO add c2i also
 setlocal suffixesadd=.c2
 setlocal commentstring=//\ %s
 setlocal makeprg=c2c
-setlocal compiler=c2c

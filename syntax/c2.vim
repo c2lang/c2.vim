@@ -16,7 +16,7 @@ syn keyword     c2Directive         module import as c2
 
 hi def link     c2Directive         Statement
 
-" keyword local is special: in imports, treat it as keyword, otherwise as type
+" keyword local is special: in imports; treat it as keyword, otherwise as type
 syn match       c2Type              /^\s*local\>/
 syn match       c2Directive         /\<local\>/
 

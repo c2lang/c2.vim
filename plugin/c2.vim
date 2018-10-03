@@ -9,6 +9,8 @@ function! s:fmt_autosave()
   endif
 endfunction
 
+compiler c2c
+
 "augroup vim-c2
 "  autocmd!
 "  autocmd BufWritePre *.c2 call s:fmt_autosave()
