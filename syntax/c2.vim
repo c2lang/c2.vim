@@ -51,7 +51,10 @@ syn keyword     c2Keyword           sizeof elemsof enum_min enum_max cast
 hi def link     c2Keyword           Keyword
 
 " Attributes
-"TODO parse @() + known attributes
+syn keyword     c2Attribute         contained export packed unused unused_params section noreturn inline aligned weak opaque
+syn cluster     c2AttrGroup         contains=c2Attribute
+syn region      c2Attributes        start="@(" end=")" contains=@c2AttrGroup, c2String, c2DecimalInt, c2HexadecimalInt, c2OctalInt, c2Character
+hi def link     c2Attribute         Keyword
 
 " Comments
 syn keyword     c2Todo              contained TODO FIXME XXX BUG
@@ -79,7 +82,7 @@ hi def link     c2SpecialString     Special
 hi def link     c2EscapeError       Error
 
 " Strings and their contents
-syn cluster     c2StringGroup       contains=c2EscapeOctal,c2EscapeC,c2EscapeX,c2EscapeU,c2EscapeBigU,c2Es
+syn cluster     c2StringGroup       contains=c2EscapeOctal,c2EscapeC,c2EscapeX,c2EscapeU,c2EscapeBigU,c2EscapeError
 syn region      c2String            start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@c2StringGroup
 syn region      c2RawString         start=+`+ end=+`+
 
