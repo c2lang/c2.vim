@@ -9,7 +9,7 @@ function! s:fmt_autosave()
   endif
 endfunction
 
-compiler c2c
+"compiler c2c
 
 "augroup vim-c2
 "  autocmd!

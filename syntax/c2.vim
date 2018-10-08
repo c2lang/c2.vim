@@ -169,3 +169,4 @@ hi def link     cCppInElse2         cCppOutIf2
 hi def link     cCppOutIf2          cCppOut
 hi def link     cCppOut             Comment
 
+compiler c2c
