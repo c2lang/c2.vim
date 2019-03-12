@@ -21,12 +21,13 @@ syn match       c2Type              /^\s*local\>/
 syn match       c2Directive         /\<local\>/
 
 syn keyword     c2DeclType          func struct type enum union const public
-syn keyword     c2Type              bool f32 f64 i8 i16 i32 i64 u8 u16 u32 u64 char void
+syn keyword     c2Type              bool f32 f64 i8 i16 i32 i64 isize u8 u16 u32 u64 usize char void
 syn keyword     c2Type              c_char c_int c_uint c_long c_longlong c_ulong c_ulonglong c_size c_ssize c_float c_double
 syn keyword     c2Constant          nil
 syn keyword     c2Constant          buildtime
 syn keyword     c2Constant          min_i8 max_i8 min_u8 max_u8 min_i16 max_i16 min_u16 max_u16
 syn keyword     c2Constant          min_i32 max_i32 min_u32 max_u32 min_i64 max_i64 min_u64 max_u64
+syn keyword     c2Constant          min_isize max_isize min_usize max_usize
 syn keyword     c2Boolean           true false
 
 hi def link     c2DeclType          Structure
