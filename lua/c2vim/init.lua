@@ -35,15 +35,7 @@ function dump(o)
    end
 end
 
-
-function M.getTagResults()
-    local line,col = unpack(vim.api.nvim_win_get_cursor(0))
-    col = col + 1   -- col seems to be 0-based
-    local filename = vim.api.nvim_eval('expand("%")')
-    --local cwd = vim.fn.getcwd()
-    --local filename = string.sub(current_file, string.len(cwd) + 2)
-
-    local cmd = "c2tags " .. filename .. " " .. line .. " " .. col
+function get_tag(cmd)
     res = os.capture(cmd, false)
     --print(res)
     local result = split(res, ' ')
@@ -61,6 +53,25 @@ function M.getTagResults()
     vim.cmd('set so=999')
     vim.api.nvim_win_set_cursor(0, { dest_line, dest_col })
     vim.cmd('set so=0')
+end
+
+function M.getTagDef()
+    local line,col = unpack(vim.api.nvim_win_get_cursor(0))
+    col = col + 1   -- col seems to be 0-based
+    local filename = vim.api.nvim_eval('expand("%")')
+    --local cwd = vim.fn.getcwd()
+    --local filename = string.sub(current_file, string.len(cwd) + 2)
+
+    local cmd = "c2tags " .. filename .. " " .. line .. " " .. col
+    get_tag(cmd)
+end
+
+function M.getSymbolDef(symbol)
+    -- word under cursor:
+    -- local symbol = vim.api.nvim_eval('expand("<cfile>")')
+
+    local cmd = "c2tags " .. symbol
+    get_tag(cmd)
 end
 
 return M

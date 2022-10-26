@@ -18,5 +18,7 @@ EOF
 
 lua c2vim = require("c2vim")
 
-command! -buffer -nargs=0 C2TagResult lua c2vim.getTagResults()
+command! -buffer -nargs=0 C2TagDef lua c2vim.getTagDef()
+
+command! -buffer -nargs=1 C2SymbolDef lua c2vim.getSymbolDef("<args>")
 
