@@ -58,7 +58,9 @@ function M.getTagResults()
     --print("FOUND: ".. dest_file .. " " .. dest_line .. " " .. dest_col )
     print(" "); -- otherwise shows :C2TagResult
     vim.cmd('e ' .. dest_file)
+    vim.cmd('set so=999')
     vim.api.nvim_win_set_cursor(0, { dest_line, dest_col })
+    vim.cmd('set so=0')
 end
 
 return M
