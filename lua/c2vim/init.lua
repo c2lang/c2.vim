@@ -39,9 +39,9 @@ end
 function M.getTagResults()
     local line,col = unpack(vim.api.nvim_win_get_cursor(0))
     col = col + 1   -- col seems to be 0-based
-    local current_file = vim.api.nvim_eval('expand("%:p")')
-    local cwd = vim.fn.getcwd()
-    local filename = string.sub(current_file, string.len(cwd) + 2)
+    local filename = vim.api.nvim_eval('expand("%")')
+    --local cwd = vim.fn.getcwd()
+    --local filename = string.sub(current_file, string.len(cwd) + 2)
 
     local cmd = "c2tags " .. filename .. " " .. line .. " " .. col
     res = os.capture(cmd, false)
@@ -55,14 +55,10 @@ function M.getTagResults()
     local dest_file = result[2]
     local dest_line = result[3] + 0
     local dest_col = result[4] - 1
-    print("FOUND: ".. dest_file .. " " .. dest_line .. " " .. dest_col )
+    --print("FOUND: ".. dest_file .. " " .. dest_line .. " " .. dest_col )
+    print(" "); -- otherwise shows :C2TagResult
+    vim.cmd('e ' .. dest_file)
     vim.api.nvim_win_set_cursor(0, { dest_line, dest_col })
-
-    -- Note:the line below changes the content of the line!
-    --vim.api.nvim_set_current_line(dest_line)
-
-    --vim.api.nvim_buf_set_lines(
-    --vim.api.nvim_win_set_cursor( M.input.winid, {vim.fn.line('$'), vim.fn.getline('.'):len()})
 end
 
 return M

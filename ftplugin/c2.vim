@@ -6,8 +6,7 @@
 "setlocal commentstring=//\ %s
 "setlocal makeprg=c2c
 
-"let g:c2vim_debug = get(g:, 'c2vim_debug', 0)
-let g:c2vim_debug = 1
+let g:c2vim_debug = get(g:, 'c2vim_debug', 0)
 
 " This forces a reload of the plugin when we source it.
 " Helps development times tremendously
