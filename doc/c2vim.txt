@@ -1,0 +1,38 @@
+*c2vim*    	       Language support for C2
+
+Original Author:
+    Bas van den Berg <b.van.den.berg.nl@gmail.com>
+
+==============================================================================
+INTRODUCTION                                                 *c2vim-intro*
+
+C2vim provides language support for C2.
+The commands are:
+`:C2TagResult`to jump to the definition of the symbol under the cursor
+
+
+==============================================================================
+USAGE                                                        *c2vim-usage*
+
+Jump to symbol defitition:
+>
+	:C2TagResult
+>
+I highly suggest binding this to allow fast access:
+>
+	" Example keybinding:
+    autocmd! Filetype c2 map<buffer> <C-h> :C2TagResult<CR>
+>
+
+Note
+
+Nothing yet
+
+==============================================================================
+DEBUGGING                                                    *c2vim-debug*
+
+You can set `g:c2vim_debug` to true to enable additional logging that will
+detail what the internals of c2vim are doing while being run. This can
+help diagnose results that aren't what you expect.
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

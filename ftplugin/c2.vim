@@ -1,17 +1,23 @@
 " Only do this when not done yet for this buffer
 
-compiler c2c
+"compiler c2c
 
-if (exists("b:did_ftplugin"))
-  finish
-endif
+"setlocal suffixesadd=.c2
+"setlocal commentstring=//\ %s
+"setlocal makeprg=c2c
 
-let b:did_ftplugin = 1
+"let g:c2vim_debug = get(g:, 'c2vim_debug', 0)
+let g:c2vim_debug = 1
 
-set expandtab
-set tabstop=4
-set shiftwidth=4
+" This forces a reload of the plugin when we source it.
+" Helps development times tremendously
 
-setlocal suffixesadd=.c2
-setlocal commentstring=//\ %s
-setlocal makeprg=c2c
+lua<<EOF
+-- uncomment below to allow "source %" to reload the plugin during development
+-- require('plenary.reload').reload_module('c2vim', true)
+EOF
+
+lua c2vim = require("c2vim")
+
+command! -buffer -nargs=0 C2TagResult lua c2vim.getTagResults()
+
