@@ -20,7 +20,7 @@ hi def link     c2Directive         Statement
 syn match       c2Type              /^\s*local\>/
 syn match       c2Directive         /\<local\>/
 
-syn keyword     c2DeclType          func struct type enum union const public
+syn keyword     c2DeclType          func struct type enum union const public template
 syn keyword     c2Type              bool f32 f64 i8 i16 i32 i64 isize u8 u16 u32 u64 usize char void reg8 reg16 reg32 reg64
 syn keyword     c2Type              c_char c_uchar c_int c_uint c_long c_longlong c_ulong c_ulonglong c_size c_ssize c_float c_double
 syn keyword     c2Constant          nil
