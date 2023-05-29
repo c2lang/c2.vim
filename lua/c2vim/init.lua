@@ -2,6 +2,8 @@ utils = require('c2vim.utils')
 
 local M = {}
 
+local target_name = nil
+
 function os.capture(cmd, raw)
   local f = assert(io.popen(cmd, 'r'))
   local s = assert(f:read('*a'))
@@ -34,7 +36,7 @@ function get_tag(cmd)
     local dest_line = result[3] + 0
     local dest_col = result[4] - 1
     --print("FOUND: ".. dest_file .. " " .. dest_line .. " " .. dest_col )
-    print(' '); -- otherwise shows :C2TagResult
+    print(' ') -- otherwise shows :C2TagResult
     vim.cmd('e ' .. dest_file)
     vim.cmd('set so=999')
     vim.api.nvim_win_set_cursor(0, { dest_line, dest_col })
@@ -53,6 +55,27 @@ end
 function M.getSymbolDef(symbol)
     local cmd = 'c2tags ' .. symbol
     get_tag(cmd)
+end
+
+function M.setTarget(target)
+    target_name = target
+end
+
+function M.renameSymbol(symbol)
+    -- TODO check that buffer is saved
+    local line,col = unpack(vim.api.nvim_win_get_cursor(0))
+    col = col + 1   -- col seems to be 0-based
+    local filename = vim.api.nvim_eval('expand("%")')
+    local cmd = 'c2rename '
+    if (target_name) then
+        cmd = cmd .. '-t ' .. target_name .. ' '
+    end
+    cmd = cmd .. filename .. ' ' .. line .. ' ' .. col .. ' ' .. symbol
+
+    res = os.capture(cmd, false)
+    print(res)
+    vim.cmd('edit')
+    vim.api.nvim_win_set_cursor(0, { line, col })
 end
 
 return M

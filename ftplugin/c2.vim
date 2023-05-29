@@ -10,3 +10,7 @@ command! -buffer -nargs=0 C2TagDef lua c2vim.getTagDef()
 
 command! -buffer -nargs=1 C2SymbolDef lua c2vim.getSymbolDef("<args>")
 
+command! -buffer -nargs=1 C2Rename lua c2vim.renameSymbol("<args>")
+
+command! -buffer -nargs=1 C2SetTarget lua c2vim.setTarget("<args>")
+
