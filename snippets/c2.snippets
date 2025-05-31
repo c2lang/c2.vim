@@ -61,6 +61,11 @@ snippet st
 	type ${1:/* typename */} struct {
 		${2:/* fields */}
 	}
+# Opaque Struct
+snippet os
+	public type ${1:/* typename */} struct @(opaque) {
+		${2:/* fields */}
+	}
 # Enum
 snippet en
 	type ${1:/* typename */} enum ${2:/* type */} {

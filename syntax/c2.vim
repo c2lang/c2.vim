@@ -37,7 +37,7 @@ hi def link     c2Boolean           Boolean
 
 syn keyword     c2Storage           volatile
 syn keyword     c2Statement         break return continue asm goto fallthrough
-syn keyword     c2Conditional       if else switch sswitch
+syn keyword     c2Conditional       if else switch
 syn keyword     c2Label             case default
 syn keyword     c2Repeat            while for do
 
@@ -52,7 +52,7 @@ syn keyword     c2Keyword           sizeof offsetof elemsof enum_min enum_max ca
 hi def link     c2Keyword           Keyword
 
 " Attributes
-syn keyword     c2Attribute         contained export packed unused unused_params section noreturn inline aligned weak opaque printf_format auto_file auto_line pure
+syn keyword     c2Attribute         contained export packed unused unused_params section noreturn inline aligned weak constructor destructor opaque printf_format auto_file auto_line pure
 syn cluster     c2AttrGroup         contains=c2Attribute
 syn region      c2Attributes        start="@(" end=")" contains=@c2AttrGroup, c2String, c2DecimalInt, c2HexadecimalInt, c2OctalInt, c2Character
 hi def link     c2Attribute         Keyword
