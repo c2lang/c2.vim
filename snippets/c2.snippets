@@ -16,7 +16,7 @@ snippet mod
 	${2}
 # import
 snippet im
-	import ${1:stdio};
+	import ${1:stdio} local;
 snippet lo
 	import ${1:stdio} local;
 	${2}
@@ -41,14 +41,10 @@ snippet wh
 	}
 # For Loop
 snippet for
-	for (u32 i=0; i<${1:count}; i++) {
+	for (u32 i = 0; i < ${1:count}; i++) {
 		${2:/* code */}
 	}
 # Custom For Loop
-snippet forr
-	for (${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
-		${5:/* code */}
-	}
 # Function
 snippet fun
 	fn ${1:void} ${2:function_name}(${3})
