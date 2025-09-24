@@ -11,15 +11,27 @@ let b:current_syntax = "c2"
 
 syn case match
 
-" Modules
-syn keyword     c2Directive         module import as c2
+syn match PreProc        '[@]'
+syn match ocenSymbol     '[,;]'
+syn match Operator       '[\+\-\%=\/\^\&\*!?><\$|]'
+syn match SpecialComment '[`:\.]'
+syn match Constant       '[{}\[\]()]'
 
-hi def link     c2Directive         Statement
+"syn match Operator    '[\+\-\%=\^\&\*!?><\$|:/]'
+syn match Repeat      "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
+syn match Function    "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
+syn match Exception   "^\w\+\s*\(:$\)\@="
+
+" Modules
+syn keyword     c2Directive         module import
+
+hi def link     c2Directive         Include
 
 " keyword local is special: in imports; treat it as keyword, otherwise as type
 syn match       c2Type              /^\s*local\>/
 syn match       c2Directive         /\<local\>/
 
+syn keyword     Label export packed unused unused_params section noreturn printf_format inline aligned weak opaque cname no_typedef constructor destructor auto_file auto_line
 syn keyword     c2DeclType          fn struct type enum union const public template
 syn keyword     c2Type              bool f32 f64 i8 i16 i32 i64 isize u8 u16 u32 u64 usize char void reg8 reg16 reg32 reg64
 syn keyword     c2Type              c_char c_uchar c_int c_uint c_long c_longlong c_ulong c_ulonglong c_size c_ssize c_float c_double
@@ -30,18 +42,20 @@ syn keyword     c2Constant          min_i32 max_i32 min_u32 max_u32 min_i64 max_
 syn keyword     c2Constant          min_isize max_isize min_usize max_usize
 syn keyword     c2Boolean           true false
 
-hi def link     c2DeclType          Structure
-hi def link     c2Type              Type
+hi def link     c2DeclType          Keyword
+"hi def link     c2Type              Statement
 hi def link     c2Constant          Constant
-hi def link     c2Boolean           Boolean
+hi def link     c2Boolean           Statement
+hi def c2Type   ctermfg=DarkCyan guifg=DarkCyan
 
 syn keyword     c2Storage           volatile
 syn keyword     c2Statement         break return continue asm goto fallthrough
 syn keyword     c2Conditional       if else switch
 syn keyword     c2Label             case default
 syn keyword     c2Repeat            while for do
+syn keyword     Operator            as c2
 
-hi def link     c2Storage           StorageClass
+hi def link     c2Storage           Statement
 hi def link     c2Statement         Statement
 hi def link     c2Conditional       Conditional
 hi def link     c2Label             Label
@@ -53,9 +67,9 @@ hi def link     c2Keyword           Keyword
 
 " Attributes
 syn keyword     c2Attribute         contained export packed unused unused_params section noreturn inline aligned weak constructor destructor opaque printf_format auto_file auto_line pure
-syn cluster     c2AttrGroup         contains=c2Attribute
-syn region      c2Attributes        start="@(" end=")" contains=@c2AttrGroup, c2String, c2DecimalInt, c2HexadecimalInt, c2OctalInt, c2Character
-hi def link     c2Attribute         Keyword
+"syn cluster     c2AttrGroup         contains=c2Attribute
+"syn region      c2Attribute        start="@(" end=")" contains=@c2AttrGroup, c2String, c2DecimalInt, c2HexadecimalInt, c2OctalInt, c2Character
+hi def link     c2Attribute        Keyword
 
 " Comments
 syn keyword     c2Todo              contained TODO FIXME XXX BUG
