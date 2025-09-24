@@ -14,7 +14,7 @@ syn case match
 " Modules
 syn keyword     c2Directive         module import as c2
 
-hi def link     c2Directive         Statement
+hi def link     c2Directive         Include
 
 " keyword local is special: in imports; treat it as keyword, otherwise as type
 syn match       c2Type              /^\s*local\>/
@@ -63,7 +63,8 @@ syn cluster     c2CommentGroup      contains=c2Todo
 syn region      c2Comment           start="/\*" end="\*/" contains=@c2CommentGroup,@Spell
 syn region      c2Comment           start="//" end="$" contains=@c2CommentGroup,@Spell
 
-hi def link     c2Comment           Comment
+"hi def link     c2Comment           Comment
+hi def c2Comment   ctermfg=DarkCyan guifg=DarkCyan
 hi def link     c2Todo              Todo
 
 " Escapes
