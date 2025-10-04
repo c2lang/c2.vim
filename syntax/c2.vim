@@ -62,7 +62,7 @@ hi def link     c2Conditional       Conditional
 hi def link     c2Label             Label
 hi def link     c2Repeat            Repeat
 
-syn keyword     c2Keyword           sizeof offsetof elemsof enum_min enum_max cast to_container assert static_assert
+syn keyword     c2Keyword           sizeof offsetof elemsof enum_min enum_max cast to_container assert static_assert static
 
 hi def link     c2Keyword           Keyword
 
