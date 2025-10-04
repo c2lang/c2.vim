@@ -1,7 +1,9 @@
+#plugin deps_generator [all-targets files private]
+#plugin refs_generator [all-targets]
 
 executable test
     $warnings no-unused
-    $generate-c single-module
+    $backend c
     main.c2
 end
 
