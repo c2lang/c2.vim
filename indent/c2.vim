@@ -51,7 +51,7 @@ function! GetC2Indent(lnum)
         return indent(prevLineNum)
     endif
 
-    if prevLine =~ '\v\=\s*[\(\{\[]*\s*(".*")?$'
+    if prevLine =~ '\v\=\s*[\(\{\[]*\s*((".*")|(```))?$'
         return indent(prevLineNum) + 4
     endif
 
