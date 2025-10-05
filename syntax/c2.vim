@@ -36,6 +36,7 @@ syn keyword     Structure           struct enum union template
 syn keyword     c2DeclType          fn type const
 syn keyword     c2Type              bool f32 f64 i8 i16 i32 i64 isize u8 u16 u32 u64 usize char void reg8 reg16 reg32 reg64
 syn keyword     c2Type              c_char c_uchar c_int c_uint c_long c_longlong c_ulong c_ulonglong c_size c_ssize c_float c_double
+syn keyword     c2Type              int8_t uint8_t int16_t uint16_t int32_t uint32_t int64_t uint64_t size_t ssize_t float double
 syn keyword     c2Constant          nil
 syn keyword     c2Constant          buildtime
 syn keyword     c2Constant          min_i8 max_i8 min_u8 max_u8 min_i16 max_i16 min_u16 max_u16

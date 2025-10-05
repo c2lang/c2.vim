@@ -47,19 +47,23 @@ function! GetC2Indent(lnum)
     let prevLineNum = prevnonblank(a:lnum-1)
     let prevLine = getline(prevLineNum)
 
-    if prevLine =~ '\v\s*;$'
+    if prevLine =~ '\v\s*;\s*$'
         return indent(prevLineNum)
     endif
 
-    if prevLine =~ '\v\=\s*[\(\{\[]*\s*(".*")?$'
+    if prevLine =~ '\v\=\s*[\(\{\[]*\s*((".*")|(```))?\s*$'
         return indent(prevLineNum) + 4
     endif
 
-    if prevLine =~ '\v\s*".*"$'
+    if prevLine =~ '\v\s*".*"\s*$'
         return indent(prevLineNum)
     endif
 
-    if prevLine =~ '\v^\s*default:$'
+    "if prevLine =~ '\v^\s*default:$'
+        "return indent(prevLineNum) + 4
+    "endif
+
+    if prevLine =~ '\v:\s*$'
         return indent(prevLineNum) + 4
     endif
 
