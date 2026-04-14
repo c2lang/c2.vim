@@ -35,7 +35,7 @@ hi def link     c2Type              Type
 hi def link     c2Constant          Constant
 hi def link     c2Boolean           Boolean
 
-syn keyword     c2Storage           volatile
+syn keyword     c2Storage           volatile static tlocal
 syn keyword     c2Statement         break return continue asm goto fallthrough
 syn keyword     c2Conditional       if else switch
 syn keyword     c2Label             case default
