@@ -18,7 +18,6 @@ hi def link     c2Directive         Include
 
 " keyword local is special: in imports; treat it as keyword, otherwise as type
 syn match       c2Type              /^\s*local\>/
-syn match       c2Directive         /\<local\>/
 
 syn keyword     c2DeclType          fn struct type enum union const public template
 syn keyword     c2Type              bool f32 f64 i8 i16 i32 i64 isize u8 u16 u32 u64 usize char void reg8 reg16 reg32 reg64
@@ -47,12 +46,12 @@ hi def link     c2Conditional       Conditional
 hi def link     c2Label             Label
 hi def link     c2Repeat            Repeat
 
-syn keyword     c2Keyword           sizeof offsetof elemsof enum_min enum_max cast to_container assert static_assert
+syn keyword     c2Keyword           sizeof offsetof countof enum_min enum_max cast to_container assert static_assert
 
 hi def link     c2Keyword           Keyword
 
 " Attributes
-syn keyword     c2Attribute         contained export packed deprecated unused unused_params section noreturn inline aligned weak constructor destructor opaque printf_format auto_file auto_line pure
+syn keyword     c2Attribute         contained export packed deprecated unused unused_params section noreturn inline aligned weak constructor destructor opaque printf_format auto_file auto_line auto_func auto_expr pure
 syn cluster     c2AttrGroup         contains=c2Attribute
 syn region      c2Attributes        start="@(" end=")" contains=@c2AttrGroup, c2String, c2DecimalInt, c2HexadecimalInt, c2OctalInt, c2Character
 hi def link     c2Attribute         Keyword
